@@ -1,107 +1,81 @@
-// script.js - Portfolio & Mini-Snake
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    console.log("Terminal Sébastien Fataki activé...");
+    console.log("Terminal Sébastien Fataki initialisé...");
 
-    // --- LE MINI-JEU SNAKE ---
+    // ==========================================
+    // 1. LOGIQUE DU MINI-JEU SNAKE (TACTILE + PC)
+    // ==========================================
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     const startBtn = document.getElementById('startGameBtn');
 
-    // Paramètres du jeu
-    const gridSize = 20; // Taille d'un carré (serpent/nourriture)
-    const tileCount = canvas.width / gridSize; // Nombre de carrés par ligne
+    const gridSize = 20;
+    const tileCount = canvas.width / gridSize;
     let score = 0;
     let gameInterval;
     let isRunning = false;
 
-    // État du serpent
     let snake = [];
     let food = {};
-    let dx = 0; // Direction horizontale
-    let dy = 0; // Direction verticale
+    let dx = 0;
+    let dy = 0;
 
-    // Fonction pour démarrer/réinitialiser le jeu
     function startGame() {
-        if (isRunning) return; // Empêche de lancer plusieurs instances
-        
+        if (isRunning) return;
         isRunning = true;
         score = 0;
         dx = gridSize;
         dy = 0;
         snake = [
             { x: gridSize * 5, y: gridSize * 7 },
-            { x: gridSize * 4, y: gridSize * 7 },
-            { x: gridSize * 3, y: gridSize * 7 }
+            { x: gridSize * 4, y: gridSize * 7 }
         ];
-        
         startBtn.innerText = "Recommencer";
         placeFood();
-        
-        // Vitesse du jeu (plus le nombre est petit, plus c'est rapide)
         if (gameInterval) clearInterval(gameInterval);
-        gameInterval = setInterval(gameLoop, 120); 
+        gameInterval = setInterval(gameLoop, 130);
     }
 
-    // Boucle principale du jeu
     function gameLoop() {
-        update();
-        draw();
-    }
-
-    // Mettre à jour la logique (mouvement, collision)
-    function update() {
-        // Mouvement de la tête
+        // Mise à jour de la position
         const head = { x: snake[0].x + dx, y: snake[0].y + dy };
-        
-        // Gestion des murs (Traverser les murs)
+
+        // Collision Murs (Sortie et réentrée de l'autre côté)
         if (head.x < 0) head.x = canvas.width - gridSize;
         else if (head.x >= canvas.width) head.x = 0;
         if (head.y < 0) head.y = canvas.height - gridSize;
         else if (head.y >= canvas.height) head.y = 0;
 
-        // Collision avec soi-même
+        // Collision Corps
         for (let i = 1; i < snake.length; i++) {
-            if (snake[i].x === head.x && snake[i].y === head.y) {
-                gameOver();
-                return;
-            }
+            if (snake[i].x === head.x && snake[i].y === head.y) return gameOver();
         }
 
-        snake.unshift(head); // Ajouter nouvelle tête
+        snake.unshift(head);
 
-        // Manger la nourriture
         if (head.x === food.x && head.y === food.y) {
             score++;
             placeFood();
         } else {
-            snake.pop(); // Retirer la queue si on ne mange pas
+            snake.pop();
         }
+
+        draw();
     }
 
-    // Dessiner les éléments sur le canvas
     function draw() {
-        // Effacer le canvas
         ctx.fillStyle = '#050505';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // Dessiner le serpent (Vert Néon)
-        ctx.fillStyle = '#00ff41';
+        ctx.fillStyle = '#00ff41'; // Vert Néon
         snake.forEach((part, index) => {
-            // Tête légèrement différente
-            if (index === 0) ctx.fillStyle = '#00cc33';
-            else ctx.fillStyle = '#00ff41';
-            
-            ctx.fillRect(part.x, part.y, gridSize - 2, gridSize - 2); // -2 pour l'espace entre carrés
+            ctx.fillRect(part.x, part.y, gridSize - 2, gridSize - 2);
         });
 
-        // Dessiner la nourriture (Rouge)
-        ctx.fillStyle = '#ff0055';
+        ctx.fillStyle = '#ff0055'; // Nourriture
         ctx.fillRect(food.x, food.y, gridSize - 2, gridSize - 2);
     }
 
-    // Placer la nourriture aléatoirement
     function placeFood() {
         food = {
             x: Math.floor(Math.random() * tileCount) * gridSize,
@@ -112,52 +86,48 @@ document.addEventListener('DOMContentLoaded', () => {
     function gameOver() {
         isRunning = false;
         clearInterval(gameInterval);
-        startBtn.innerText = `GAME OVER (Score: ${score})`;
-        
-        // Petite lueur rouge sur le bouton
-        startBtn.style.borderColor = '#ff0055';
-        startBtn.style.color = '#ff0055';
-        
-        setTimeout(() => {
-            startBtn.style.borderColor = '#3498db';
-            startBtn.style.color = '#3498db';
-            startBtn.innerText = "Lancer_Partie";
-        }, 2500);
+        startBtn.innerText = `SCORE: ${score} - REJOUER ?`;
     }
 
-    // Gestion des contrôles (Z, Q, S, D et Flèches)
-    document.addEventListener('keydown', (e) => {
+    // --- CONTRÔLES (PC & TACTILE) ---
+    const handleDirection = (newDx, newDy) => {
         if (!isRunning) return;
+        if (newDx !== 0 && dx === 0) { dx = newDx; dy = 0; }
+        if (newDy !== 0 && dy === 0) { dx = 0; dy = newDy; }
+    };
 
+    // Clavier
+    document.addEventListener('keydown', (e) => {
         const key = e.key.toLowerCase();
-
-        // Empêcher le demi-tour instantané
-        if ((key === 'q' || e.key === 'ArrowLeft') && dx === 0) {
-            dx = -gridSize; dy = 0;
-        } else if ((key === 'd' || e.key === 'ArrowRight') && dx === 0) {
-            dx = gridSize; dy = 0;
-        } else if ((key === 'z' || e.key === 'ArrowUp') && dy === 0) {
-            dx = 0; dy = -gridSize;
-        } else if ((key === 's' || e.key === 'ArrowDown') && dy === 0) {
-            dx = 0; dy = gridSize;
-        }
+        if (key === 'z' || e.key === 'ArrowUp') handleDirection(0, -gridSize);
+        if (key === 's' || e.key === 'ArrowDown') handleDirection(0, gridSize);
+        if (key === 'q' || e.key === 'ArrowLeft') handleDirection(-gridSize, 0);
+        if (key === 'd' || e.key === 'ArrowRight') handleDirection(gridSize, 0);
     });
 
-    // Écouteur sur le bouton de démarrage
+    // Tactile (Boutons mobiles)
+    const btnUp = document.getElementById('btnUp');
+    const btnDown = document.getElementById('btnDown');
+    const btnLeft = document.getElementById('btnLeft');
+    const btnRight = document.getElementById('btnRight');
+
+    if(btnUp) btnUp.addEventListener('click', () => handleDirection(0, -gridSize));
+    if(btnDown) btnDown.addEventListener('click', () => handleDirection(0, gridSize));
+    if(btnLeft) btnLeft.addEventListener('click', () => handleDirection(-gridSize, 0));
+    if(btnRight) btnRight.addEventListener('click', () => handleDirection(gridSize, 0));
+
     startBtn.addEventListener('click', startGame);
 
+    // ==========================================
+    // 2. ANIMATIONS SMOOTH SCROLL
+    // ==========================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
 });
-// Ajoutez ceci à l'intérieur de votre document.addEventListener('DOMContentLoaded', () => { ... })
-
-const setDir = (newDx, newDy) => {
-    if (!isRunning) return;
-    // Empêcher le demi-tour direct
-    if (newDx !== 0 && dx === 0) { dx = newDx; dy = 0; }
-    if (newDy !== 0 && dy === 0) { dx = 0; dy = newDy; }
-};
-
-// Écouteurs pour les boutons tactiles
-document.getElementById('btnUp').onclick = () => setDir(0, -gridSize);
-document.getElementById('btnDown').onclick = () => setDir(0, gridSize);
-document.getElementById('btnLeft').onclick = () => setDir(-gridSize, 0);
-document.getElementById('btnRight').onclick = () => setDir(gridSize, 0);
