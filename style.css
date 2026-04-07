@@ -1,0 +1,161 @@
+/* style.css - Thème Cyberpunk Professional */
+
+:root {
+    /* Couleurs de fond (Noir pur pour le contraste néon) */
+    --bg-main: #000000;
+    --bg-card: #0a0a0a;
+    --bg-input: #151515;
+    
+    /* Couleurs de texte (Vert Néon et Blanc Cassé) */
+    --text-main: #a0a0a0;
+    --text-neon: #00ff41; /* Vert Matrix classique */
+    --text-glitch: #ff0055; /* Accent rouge glitch */
+    
+    /* Autres variables */
+    --shadow-neon: 0 0 10px rgba(0, 255, 65, 0.5);
+    --border-cyber: 1px solid #222;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Fira Code', monospace; /* Police code obligatoire */
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding-top: 70px;
+}
+
+h1, h2, h3 { color: #ffffff; font-weight: 700; }
+
+/* --- Navbar Cyber --- */
+header {
+    position: fixed;
+    top: 0; width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    border-bottom: 1px solid #111;
+}
+
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1200px; margin: 0 auto; padding: 15px 30px;
+}
+
+.logo { color: var(--text-neon); font-size: 1.3rem; }
+
+.nav-links { display: flex; gap: 20px; }
+
+.nav-links a {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover { color: var(--text-neon); text-shadow: var(--shadow-neon); }
+
+/* --- Section Hero & Photo --- */
+.hero { display: flex; justify-content: center; align-items: center; min-height: 85vh; text-align: center; }
+
+.hero-content h1 { font-size: 3.5rem; margin-bottom: 15px; text-transform: uppercase; }
+
+.hero-content .subtitle, .hero-content .specialty {
+    color: var(--text-neon);
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.profile-pic {
+    width: 170px; height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #111;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+    margin: 30px 0;
+}
+
+/* Boutons Cyber */
+.cta-buttons { display: flex; gap: 15px; justify-content: center; margin-top: 30px;}
+
+.btn-cyber, .btn-sub-cyber {
+    padding: 12px 24px; border-radius: 0; /* Carré */
+    font-weight: 700; font-size: 0.9rem; text-transform: uppercase;
+}
+
+.btn-cyber {
+    background-color: transparent;
+    border: 2px solid var(--text-neon);
+    color: var(--text-neon);
+}
+
+.btn-cyber:hover {
+    background-color: var(--text-neon);
+    color: #000;
+    box-shadow: var(--shadow-neon);
+}
+
+.btn-sub-cyber { color: var(--text-main); }
+
+/* --- Grille des Projets & Cards --- */
+.projects-section { max-width: 1200px; margin: 0 auto; padding: 80px 30px; }
+
+.section-title {
+    text-align: center; color: var(--text-neon);
+    font-size: 2rem; margin-bottom: 50px; text-transform: uppercase;
+}
+
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+
+.project-card {
+    background-color: var(--bg-card);
+    padding: 25px; border: var(--border-cyber);
+    transition: all 0.3s;
+}
+
+.project-card:hover { border-color: var(--text-neon); transform: translateY(-3px); }
+
+/* Badges Statut Cyber */
+.status {
+    display: inline-block; padding: 4px 10px; font-size: 0.7rem;
+    font-weight: bold; margin-bottom: 15px; border: 1px solid;
+}
+
+.completed { border-color: var(--text-neon); color: var(--text-neon); }
+.ongoing { border-color: var(--text-glitch); color: var(--text-glitch); }
+.game { border-color: #3498db; color: #3498db; }
+
+.project-stack span {
+    background-color: #111; color: var(--text-neon);
+    padding: 4px 8px; font-size: 0.75rem; margin-right: 5px;
+}
+
+/* --- LE MINI JEU CSS --- */
+.game-card { text-align: center; }
+
+.game-container {
+    margin-top: 20px;
+    display: flex; flex-direction: column; align-items: center; gap: 15px;
+}
+
+#gameCanvas {
+    background-color: #050505;
+    border: 2px solid #222;
+}
+
+.btn-game {
+    background: transparent; border: 1px solid #3498db;
+    color: #3498db; padding: 8px 16px; font-family: 'Fira Code', monospace;
+    cursor: pointer; text-transform: uppercase;
+}
+
+.btn-game:hover { background: #3498db; color: #000; }
+
+/* --- Footer --- */
+footer { text-align: center; padding: 30px; border-top: 1px solid #111; color: #555; font-size: 0.8rem;}
+
+/* Responsivité Basique */
+@media (max-width: 768px) {
+    .navbar { padding: 15px; flex-direction: column; gap: 10px; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+}

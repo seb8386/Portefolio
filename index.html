@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sébastien Fataki | Portfolio Cyber</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cyber-theme">
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">&gt;_ SEB_FATAKI</div>
+            <ul class="nav-links">
+                <li><a href="#accueil"> Accueil </a></li>
+                <li><a href="#projets"> Projets </a></li>
+                <li><a href="#competences"> Compétences </a></li>
+                <li><a href="#contact"> Contact </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="accueil" class="hero">
+            <div class="hero-content">
+                <div class="glitch-wrapper">
+                    <h1 class="glitch" data-text="Sébastien Fataki">Sébastien Fataki</h1>
+                </div>
+                
+                <div class="profile-container">
+                    <img src="fat.jpg" alt="Sébastien Fataki" class="profile-pic">
+                </div>
+
+                <p class="subtitle">Initialisation du protocole de développement... [OK]</p>
+                <p class="specialty">&gt; Spécialisation : Flutter | Firebase | Python</p>
+                
+                <div class="cta-buttons">
+                    <a href="#projets" class="btn-cyber">Explorer_les_projets</a>
+                    <a href="https://github.com/seb8386" target="_blank" class="btn-sub-cyber">Github_Profile</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projets" class="projects-section">
+            <h2 class="section-title">Noyau de Projets</h2>
+            
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="status completed">TERMINE</div>
+                    <h3>ChatBox</h3>
+                    <p>Messagerie temps réel. Flux de données Live.</p>
+                    <div class="tech-stack">
+                        <span>Flutter</span> <span>Firebase</span>
+                    </div>
+                    <a href="https://github.com/seb8386/flutter-chat" class="project-link">Source_Code →</a>
+                </article>
+
+                <article class="project-card ongoing-card">
+                    <div class="status ongoing">EN_COURS</div>
+                    <h3>Analyse Pannes (SNEL)</h3>
+                    <p>Collecte & Analyse statistique de données (TFC).</p>
+                    <div class="tech-stack">
+                        <span>Python</span> <span>SQL</span>
+                    </div>
+                </article>
+
+                <article class="project-card game-card">
+                    <div class="status game">DISTRACTION</div>
+                    <h3>Mini-Snake.exe</h3>
+                    <p>Contrôles : [Z] [Q] [S] [D] ou Flèches.</p>
+                    <div class="game-container">
+                        <canvas id="gameCanvas" width="280" height="280"></canvas>
+                        <button id="startGameBtn" class="btn-game">Lancer_Partie</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="competences" class="skills">
+            <h2 class="section-title">Matrices de Compétences</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Dev_Stack</h3>
+                    <p>Flutter, Dart, Firebase, Python, SQL</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Outils_Sys</h3>
+                    <p>Git, GitHub, VS Code, Linux_Base</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Com_Huma</h3>
+                    <p>Français, Anglais (Leadership)</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Terminal Sébastien Fataki | © 2026 | Système Opérationnel.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
