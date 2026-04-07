@@ -66,14 +66,24 @@
                 </article>
 
                 <article class="project-card game-card">
-                    <div class="status game">DISTRACTION</div>
-                    <h3>Mini-Snake.exe</h3>
-                    <p>Contrôles : [Z] [Q] [S] [D] ou Flèches.</p>
-                    <div class="game-container">
-                        <canvas id="gameCanvas" width="280" height="280"></canvas>
-                        <button id="startGameBtn" class="btn-game">Lancer_Partie</button>
-                    </div>
-                </article>
+    <div class="status game">DISTRACTION</div>
+    <h3>Mini-Snake.exe</h3>
+    <p>Contrôles : Z-Q-S-D ou flèches tactiles.</p>
+    <div class="game-container">
+        <canvas id="gameCanvas" width="280" height="280"></canvas>
+        
+        <div class="mobile-controls">
+            <button class="ctrl-btn up" id="btnUp">▲</button>
+            <div class="ctrl-row">
+                <button class="ctrl-btn left" id="btnLeft">◄</button>
+                <button class="ctrl-btn down" id="btnDown">▼</button>
+                <button class="ctrl-btn right" id="btnRight">►</button>
+            </div>
+        </div>
+
+        <button id="startGameBtn" class="btn-game">Lancer_Partie</button>
+    </div>
+</article>
             </div>
         </section>
 

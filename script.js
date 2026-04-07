@@ -147,3 +147,17 @@ document.addEventListener('DOMContentLoaded', () => {
     startBtn.addEventListener('click', startGame);
 
 });
+// Ajoutez ceci à l'intérieur de votre document.addEventListener('DOMContentLoaded', () => { ... })
+
+const setDir = (newDx, newDy) => {
+    if (!isRunning) return;
+    // Empêcher le demi-tour direct
+    if (newDx !== 0 && dx === 0) { dx = newDx; dy = 0; }
+    if (newDy !== 0 && dy === 0) { dx = 0; dy = newDy; }
+};
+
+// Écouteurs pour les boutons tactiles
+document.getElementById('btnUp').onclick = () => setDir(0, -gridSize);
+document.getElementById('btnDown').onclick = () => setDir(0, gridSize);
+document.getElementById('btnLeft').onclick = () => setDir(-gridSize, 0);
+document.getElementById('btnRight').onclick = () => setDir(gridSize, 0);

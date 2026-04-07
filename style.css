@@ -159,3 +159,56 @@ footer { text-align: center; padding: 30px; border-top: 1px solid #111; color: #
     .hero-content h1 { font-size: 2.5rem; }
     .projects-grid { grid-template-columns: 1fr; }
 }
+/* Amélioration de l'image de profil sur mobile */
+.profile-pic {
+    width: 140px; /* Plus petit sur mobile */
+    height: 140px;
+    max-width: 100%;
+}
+
+/* Style des contrôles tactiles */
+.mobile-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin: 15px 0;
+}
+
+.ctrl-row {
+    display: flex;
+    gap: 5px;
+}
+
+.ctrl-btn {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 255, 65, 0.1);
+    border: 1px solid var(--text-neon);
+    color: var(--text-neon);
+    font-size: 1.2rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none; /* Évite de sélectionner le texte en cliquant vite */
+}
+
+.ctrl-btn:active {
+    background: var(--text-neon);
+    color: #000;
+}
+
+/* Cacher les contrôles sur les grands écrans (PC) si vous voulez */
+@media (min-width: 1024px) {
+    .mobile-controls {
+        display: none;
+    }
+}
+
+/* Correction Canvas pour mobile */
+#gameCanvas {
+    max-width: 100%; /* S'adapte à la largeur du téléphone */
+    height: auto;
+}
