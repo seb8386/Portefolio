@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sébastien Fataki | Portfolio Pro</title>
+    <title>Sébastien Fataki </title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="cyber-theme">
 
     <header>
         <nav class="navbar">
-            <div class="logo">&gt;IT</div>
+            <div class="logo">&gt;IT_FATAKI</div>
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#projets">Projets</a></li>
-                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -25,96 +26,77 @@
             <div class="cover-photo"></div> 
             <div class="profile-info-container">
                 <div class="profile-pic-wrapper">
-                    <img src="fat.jpg" alt="Sébastien Fataki" class="profile-pic-social">
+                    <img src="images/fat.jpg" alt="Sébastien Fataki" class="profile-pic-social">
                 </div>
                 <div class="profile-details-social">
                     <h1>Sébastien Fataki</h1>
-                    <p class="subtitle-social">Développeur Flutter & Python | Étudiant en TFC à la SNEL</p>
+                    <p class="subtitle-social">Développeur Flutter, Python & PHP</p>
                 </div>
             </div>
         </section>
 
+        <div class="stats-bar">
+            <div class="stat-item"><i class="fas fa-eye"></i> <span id="visit-count">0</span> Visiteurs</div>
+            <div class="stat-item"><i class="fas fa-code-branch"></i> 5 Projets Actifs</div>
+        </div>
+
         <section class="bio-section">
             <div class="bio-card">
-                <h2 class="bio-title">who Am I ?</h2>
+                <h2 class="bio-title">Who Am I ?</h2>
                 <p>
-                    Hey ! Je suis <strong>Sébastien Fataki</strong>, développeur passionné  par la creation des applications. 
-                    entrepreuneur et etudiant à <strong>ISIPA</strong> et <strong>Analyse</strong>, je conçois des solutions  fluides. 
-                    Actuellement à la <strong>SNEL</strong> pour mon travail de fin de cycle, j'exploite <strong>Python</strong> pour l'analyse de données complexes.
+                    Hey ! Je suis <strong>Sébastien Fataki</strong>, développeur passionné par la création d'applications. 
+                    Entrepreneur et étudiant à l'<strong>ISIPA</strong>, je conçois des solutions fluides et performantes. 
+                    Actuellement à la <strong>SNEL</strong> pour mon TFC, j'exploite <strong>Python</strong> pour l'analyse de données complexes.
                 </p>
-                <div class="bio-meta">
-                    <span><strong>Localisation:</strong> Kinshasa, RDC</span>
-                    <span><strong>Focus:</strong> Mobile Dev & Data Analysis</span>
-                </div>
             </div>
         </section>
 
         <section id="projets" class="projects-section">
             <h2 class="section-title">Mes Projets</h2>
-            
             <div class="projects-grid">
+                
                 <article class="project-card">
+                    <div class="project-image">
+                        <img src="images/chatbx.png" alt="Interface ChatBox">
+                    </div>
                     <div class="card-content">
                         <div class="status completed">TERMINE</div>
                         <h3>ChatBox</h3>
-                        <p>Messagerie temps réel avec gestion d'état et flux Live.</p>
-                        <div class="tech-stack">
-                            <span>Flutter</span> <span>Firebase</span>
-                        </div>
+                        <p>Messagerie temps réel avec Firebase.</p>
+                        <div class="tech-stack"><span>Flutter</span><span>Firebase</span></div>
+                        <a href="https://github.com/seb8386/flutter-chat" class="project-link">Source Code →</a>
                     </div>
-                    <a href="https://github.com/seb8386/flutter-chat" class="project-link">Source_Code →</a>
                 </article>
 
                 <article class="project-card">
+                    <div class="project-image">
+                        <img src="images/pharma.jpg" alt="Interface Pharma">
+                    </div>
                     <div class="card-content">
                         <div class="status completed">TERMINE</div>
                         <h3>Pharma</h3>
-                        <p>Gestion de stock et facturation pour officines pharmaceutiques.</p>
-                        <div class="tech-stack">
-                            <span>PHP</span> <span>MySQL</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="card-content">
-                        <div class="status completed">TERMINE</div>
-                        <h3>CALAPP</h3>
-                        <p>Application éducative d'aide à la résolution mathématique.</p>
-                        <div class="tech-stack">
-                            <span>C++</span> <span>Algorithmie</span>
-                        </div>
+                        <p>Gestion de stock et facturation officine.</p>
+                        <div class="tech-stack"><span>PHP</span><span>MySQL</span></div>
                     </div>
                 </article>
 
                 <article class="project-card ongoing-card">
+                    <div class="project-image">
+                        <img src="images/snel.jpg" alt="Data Analysis SNEL">
+                    </div>
                     <div class="card-content">
                         <div class="status ongoing">EN_COURS</div>
                         <h3>Analyse Pannes (SNEL)</h3>
-                        <p>Analyse prédictive et statistique des pannes électriques.</p>
-                        <div class="tech-stack">
-                            <span>Python</span> <span>SQL</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card ongoing-card">
-                    <div class="card-content">
-                        <div class="status ongoing">EN_COURS</div>
-                        <h3>Agent iA</h3>
-                        <p>Automatisation intelligente de workflows avec N8N.</p>
-                        <div class="tech-stack">
-                            <span>N8N</span> <span>Python</span>
-                        </div>
+                        <p>Analyse prédictive des réseaux électriques.</p>
+                        <div class="tech-stack"><span>Python</span><span>SQL</span></div>
                     </div>
                 </article>
 
                 <article class="project-card game-card">
                     <div class="status game">INTERACTIF</div>
                     <h3>Snake.exe</h3>
-                    <p>Utilise les flèches pour diriger le serpent.</p>
                     <div class="game-container">
-                        <canvas id="gameCanvas" width="280" height="280"></canvas>
+                        <canvas id="gameCanvas" width="280" height="200"></canvas>
                         <div class="mobile-controls">
                             <button class="ctrl-btn up" id="btnUp">▲</button>
                             <div class="ctrl-row">
@@ -129,20 +111,26 @@
             </div>
         </section>
 
-        <section id="competences" class="skills">
-            <h2 class="section-title">Matrice de Compétences</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <p>Flutter, Dart, Tkinter</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <p>Firebase, SQL, PHP</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Langues</h3>
-                    <p>Français, Anglais (Fluent)</p>
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">Me Contacter</h2>
+            
+            <div id="form-status" style="text-align:center; margin-bottom: 20px; font-weight: bold;"></div>
+
+            <div class="contact-wrapper">
+                <form id="my-form" action="https://formspree.io/f/xvzvjvbj" method="POST" class="contact-form">
+                    <input type="text" name="name" placeholder="Votre Nom" required>
+                    <input type="email" name="email" placeholder="Votre Email" required>
+                    <textarea name="message" placeholder="Votre Projet ou Message..." rows="5" required></textarea>
+                    
+                    <input type="text" name="_gotcha" style="display:none">
+                    
+                    <button type="submit" id="submit-btn" class="btn-cyber">Envoyer Message</button>
+                </form>
+                
+                <div class="contact-info">
+                    <a href="https://wa.me/243XXXXXXXXX" class="contact-item"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="mailto:sebastienfataki20@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> Email Direct</a>
+                    <a href="https://github.com/seb8386" class="contact-item"><i class="fab fa-github"></i> Mon GitHub</a>
                 </div>
             </div>
         </section>
@@ -150,6 +138,8 @@
 
     <footer>
         <p>Terminal Sébastien Fataki | © 2026 | Kinshasa, RDC</p>
+        <p>Passionné par l'anglais et d'autres langues utilisées dans le monde.</p>
+        <p>Mon numero de telephone : 0838654948 et Aussi mon M-PESA.</p>
     </footer>
 
     <script src="script.js"></script>
